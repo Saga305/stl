@@ -1,3 +1,5 @@
+//Demo of Over Allocation method of allocating and deallocating memory.
+
 #include<iostream>
 #include<cstdlib>
 #define WORDSIZE 4
@@ -35,10 +37,8 @@ class Student
 		{
 			Student *p = (Student *) (ptr +WORDSIZE);
 			*(size_t*)ptr = size;
-			cout<<"Address of  p = "<<p<<endl;
 			for(int i=0; i<NO; i++)
 			{
-			cout<<"Address of  p = "<<p+i<<endl;
 				new (p + i) Student(i+10);
 			}
 			return p;	
@@ -54,28 +54,23 @@ class Student
 		size_t n = *(size_t*) ((char*)ptr - WORDSIZE);
 		cout<<"Size which needs to free = "<<n<<endl;
 		int *p = (int *) ptr;
-			cout<<"Address of  p = "<<p<<endl;
-		for(int i = NO-1; i>0; i--)
+		for(int i = NO-1; i>=0; i--)
 		{
-			cout<<"Address of  p = "<<p+i<<endl;
-	//	(p + i)->~Student();
+			((Student*)(p + i))->~Student();
 		}
 		free((char *) ptr - WORDSIZE);
-		
 	}
-	
-
 };
+
 int main()
 {
-char *mem= (char *)Student::Allocate(NO * sizeof(Student));
-Student *ob1 = (Student *) mem;
-Student *ob2 = (Student *) (mem +sizeof(Student));
+	char *mem= (char *)Student::Allocate(NO * sizeof(Student));
+	Student *ob1 = (Student *) mem;
+	Student *ob2 = (Student *) (mem +sizeof(Student));
 
-ob1->show();
-ob2->show();
+	ob1->show();
+	ob2->show();
 
-cout<<"Before Dealloc"<<endl;
-Student::Dealloc(mem);
-return 0;
+	Student::Dealloc(mem);
+	return 0;
 }
