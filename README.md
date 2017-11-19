@@ -1,2 +1,0 @@
-# stl
-standard template library

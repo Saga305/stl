@@ -1,0 +1,9 @@
+root, photo, 128, admin, NONE
+users, photo, 512, admin, root
+navin, photo, 1024, navin, users
+navin.jpg, photo, 128000, navin, navin
+Project.doc, document, 256000, navin, navin
+Sholay.mpg, video, 4123456123, navin, navin
+amit, photo, 128, amit, users
+ajay, photo, 128, ajay, users
+Resume.doc, document, 256000, amit, amit
