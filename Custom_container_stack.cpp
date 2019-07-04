@@ -65,7 +65,7 @@ int main()
     cout<<s.pop()<<endl;
     cout<<((s.isEmpty() == true) ?"true":"false")<<endl;
     
-     Stack<double,std::deque<double> > d;
+     Stack<double> d;
     d.push(1.5);
     d.push(2.3);
     cout<<d.pop()<<endl;
