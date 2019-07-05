@@ -1,3 +1,4 @@
+//implement your own STD::transform using template.
 #include <iostream>
 #include <vector>
 
