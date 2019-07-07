@@ -5,7 +5,7 @@
 
 using namespace std;
 
-template<typename T, int MAXSIZE>
+template<typename T = int, int MAXSIZE= 20>
 class Stack
 {
     private:
@@ -68,7 +68,7 @@ class Stack
 
 int main()
 {
-        Stack<int, 20> s;
+        Stack<> s;
         
         for(int i = 0; i < 10;  i++)
         {
